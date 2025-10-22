@@ -1,9 +1,9 @@
 class Pastedown < Formula
   desc "macOS Pasteboard to Markdown"
   homepage "https://github.com/cloudygreybeard/pastedown"
-  url "https://github.com/cloudygreybeard/pastedown/releases/download/v0.2.0/pastedown"
-  sha256 "e410bc8cc17112c31cefb4c885f725c8a8946dd4d115f3dcc8116d78c6aaa62b"
-  version "0.2.0"
+  url "https://github.com/cloudygreybeard/pastedown/releases/download/v0.2.1/pastedown"
+  sha256 "0f782f144043735a4af6bfa954f291afef8b78ff8c05504fbd55ea844cab6f01"
+  version "0.2.1"
   license "Apache-2.0"
 
   depends_on :macos
