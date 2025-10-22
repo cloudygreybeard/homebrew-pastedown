@@ -1,29 +1,18 @@
 # homebrew-tap
 
-Homebrew tap for cloudygreybeard tools.
-
-## Available Tools
-
-### pastedown
-macOS Pasteboard to Markdown converter. Converts formatted text from the macOS pasteboard to Markdown format while preserving formatting, links, lists, and other structural elements.
-
-**Installation:**
-```bash
-brew install cloudygreybeard/tap/pastedown
-```
-
-**Documentation:** [cloudygreybeard/pastedown](https://github.com/cloudygreybeard/pastedown)
+Multi-package Homebrew tap for cloudygreybeard packages.
 
 ## Installation
 
-Install any tool directly (Homebrew automatically taps the repository):
+Install any package directly (Homebrew automatically taps the repository):
 
 ```bash
-# Install pastedown
-brew install cloudygreybeard/tap/pastedown
+# Install a package
+brew install cloudygreybeard/tap/<package-name>
 
-# Future tools will be available as:
-# brew install cloudygreybeard/tap/tool-name
+# Examples:
+# brew install cloudygreybeard/tap/pastedown
+# brew install cloudygreybeard/tap/other-package
 ```
 
 Or manually add the tap first (optional):
@@ -32,57 +21,77 @@ Or manually add the tap first (optional):
 brew tap cloudygreybeard/tap
 ```
 
+## Available Packages
+
+To see all available packages:
+
+```bash
+make list
+```
+
+Example output:
+```
+Available packages in this tap:
+  pastedown (v0.2.2) - macOS Pasteboard to Markdown converter
+```
+
+Or check the [Formula directory](Formula/) for available packages.
+
 ## Development
 
-### Updating the Formula
+### Tap Management
 
-When a new version of pastedown is released, update the formula:
-
-```bash
-# Update to a new version
-make update-version VERSION=0.2.0
-
-# Or use the script directly
-./hack/update-formula.sh 0.2.0
-
-# Test the updated formula
-make test
-
-# Commit and push changes
-git add Formula/pastedown.rb
-git commit -m "Update pastedown to v0.2.0"
-git push origin main
-```
-
-### Available Make Targets
+This tap includes comprehensive tooling for managing packages:
 
 ```bash
-make help          # Show this help
-make install       # Install pastedown from this tap
-make test          # Test the formula
-make update-version VERSION=<version>  # Update formula for new version
-make clean         # Clean up temporary files
+# List all available packages
+make list
+
+# Show detailed package information
+make show-package PACKAGE=pastedown
+
+# Test a package
+make test PACKAGE=pastedown
+
+# Update a package to new version
+make update-version PACKAGE=pastedown VERSION=0.2.3
+
+# Validate a formula
+make validate-package PACKAGE=pastedown
 ```
 
-### Formula Management
+### Package Lifecycle Management
 
-The formula is located in `Formula/pastedown.rb` and contains:
+```bash
+# Add a new package
+make add-package PACKAGE=newpackage REPO=cloudygreybeard/newpackage
 
-- **Description**: Tool description and homepage
+# Remove a package
+make remove-package PACKAGE=oldpackage
+
+# Show all available commands
+make help
+```
+
+### Formula Structure
+
+Each package has a formula in `Formula/<package>.rb` containing:
+
+- **Description**: Package description and homepage
 - **URL**: Download URL for the binary
 - **SHA256**: Checksum for integrity verification
 - **Version**: Release version
-- **Dependencies**: macOS requirement
-- **Installation**: Binary installation to `/opt/homebrew/bin`
-- **Test**: Version check test
+- **Dependencies**: System requirements
+- **Installation**: Binary installation instructions
+- **Test**: Package validation tests
 
 ### Release Process
 
-1. **New Release**: A new pastedown release is created in the main repository
-2. **Update Formula**: Use `make update-version VERSION=x.y.z` to update
-3. **Test**: Run `make test` to verify the formula works
+1. **New Release**: A new package release is created in the main repository
+2. **Update Formula**: Use `make update-version PACKAGE=pastedown VERSION=0.2.3`
+3. **Test**: Run `make test PACKAGE=pastedown` to verify the formula works
 4. **Commit**: Commit and push the updated formula
-5. **Verify**: Users can now install the new version with `brew install`
+5. **Verify**: Users can now install the new version with `brew install cloudygreybeard/tap/pastedown`
 
 ## Troubleshooting
 
@@ -101,7 +110,7 @@ brew install cloudygreybeard/tap/pastedown
 
 ### Formula Issues
 
-If the formula has issues:
+If a formula has issues:
 
 ```bash
 # Check formula syntax
@@ -109,10 +118,12 @@ brew audit cloudygreybeard/tap/pastedown
 
 # Test the formula
 brew test cloudygreybeard/tap/pastedown
+
+# Or use the tap management commands
+make validate-package PACKAGE=pastedown
 ```
 
-## Links
+## Repository
 
-- **Main Repository**: [cloudygreybeard/pastedown](https://github.com/cloudygreybeard/pastedown)
-- **Releases**: [GitHub Releases](https://github.com/cloudygreybeard/pastedown/releases)
-- **Documentation**: [Main README](https://github.com/cloudygreybeard/pastedown#readme)
+- **Tap Repository**: [cloudygreybeard/homebrew-tap](https://github.com/cloudygreybeard/homebrew-tap)
+- **Formula Directory**: [Formula/](Formula/)
