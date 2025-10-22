@@ -14,9 +14,111 @@ pastedown converts formatted text from the macOS pasteboard to Markdown format. 
 
 ## Features
 
-- Source selection and content merging
-- Debugging and analysis features
-- JSON output for scripting
-- Fine-grained control over conversion
+- **Source Selection**: Choose which pasteboard format to use
+- **Content Merging**: Combine multiple pasteboard formats
+- **Debugging Tools**: Inspect pasteboard contents with JSON output
+- **Fine-grained Control**: Custom priority ordering and separators
 
-For more information, visit the [main repository](https://github.com/cloudygreybeard/pastedown).
+## Usage
+
+```bash
+# Basic conversion
+pastedown
+
+# Save to file
+pastedown > output.md
+
+# Inspect pasteboard contents
+pastedown inspect
+
+# Force specific source type
+pastedown --from html
+
+# Merge multiple formats
+pastedown --merge html,text
+```
+
+## Development
+
+### Updating the Formula
+
+When a new version of pastedown is released, update the formula:
+
+```bash
+# Update to a new version
+make update-version VERSION=0.2.0
+
+# Or use the script directly
+./hack/update-formula.sh 0.2.0
+
+# Test the updated formula
+make test
+
+# Commit and push changes
+git add Formula/pastedown.rb
+git commit -m "Update pastedown to v0.2.0"
+git push origin main
+```
+
+### Available Make Targets
+
+```bash
+make help          # Show this help
+make install       # Install pastedown from this tap
+make test          # Test the formula
+make update-version VERSION=<version>  # Update formula for new version
+make clean         # Clean up temporary files
+```
+
+### Formula Management
+
+The formula is located in `Formula/pastedown.rb` and contains:
+
+- **Description**: Tool description and homepage
+- **URL**: Download URL for the binary
+- **SHA256**: Checksum for integrity verification
+- **Version**: Release version
+- **Dependencies**: macOS requirement
+- **Installation**: Binary installation to `/opt/homebrew/bin`
+- **Test**: Version check test
+
+### Release Process
+
+1. **New Release**: A new pastedown release is created in the main repository
+2. **Update Formula**: Use `make update-version VERSION=x.y.z` to update
+3. **Test**: Run `make test` to verify the formula works
+4. **Commit**: Commit and push the updated formula
+5. **Verify**: Users can now install the new version with `brew install`
+
+## Troubleshooting
+
+### Installation Issues
+
+If installation fails:
+
+```bash
+# Update the tap
+brew untap cloudygreybeard/pastedown
+brew tap cloudygreybeard/pastedown
+
+# Try installing again
+brew install cloudygreybeard/pastedown/pastedown
+```
+
+### Formula Issues
+
+If the formula has issues:
+
+```bash
+# Check formula syntax
+brew audit cloudygreybeard/pastedown/pastedown
+
+# Test the formula
+brew test cloudygreybeard/pastedown/pastedown
+```
+
+## Links
+
+- **Main Repository**: [cloudygreybeard/pastedown](https://github.com/cloudygreybeard/pastedown)
+- **Releases**: [GitHub Releases](https://github.com/cloudygreybeard/pastedown/releases)
+- **Documentation**: [Main README](https://github.com/cloudygreybeard/pastedown#readme)
