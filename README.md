@@ -1,45 +1,35 @@
 # homebrew-tap
 
-Homebrew tap for cloudygreybeard tools including [pastedown](https://github.com/cloudygreybeard/pastedown) - macOS Pasteboard to Markdown converter.
+Homebrew tap for cloudygreybeard tools.
+
+## Available Tools
+
+### pastedown
+macOS Pasteboard to Markdown converter. Converts formatted text from the macOS pasteboard to Markdown format while preserving formatting, links, lists, and other structural elements.
+
+**Installation:**
+```bash
+brew install cloudygreybeard/tap/pastedown
+```
+
+**Documentation:** [cloudygreybeard/pastedown](https://github.com/cloudygreybeard/pastedown)
 
 ## Installation
+
+Install any tool directly (Homebrew automatically taps the repository):
 
 ```bash
 # Install pastedown
 brew install cloudygreybeard/tap/pastedown
 
-# Add the tap to install other tools
-brew tap cloudygreybeard/tap
+# Future tools will be available as:
+# brew install cloudygreybeard/tap/tool-name
 ```
 
-## What is pastedown?
-
-pastedown converts formatted text from the macOS pasteboard to Markdown format. It reads HTML, RTF, and plain text from the pasteboard and converts them to clean Markdown while preserving formatting, links, lists, and other structural elements.
-
-## Features
-
-- **Source Selection**: Choose which pasteboard format to use
-- **Content Merging**: Combine multiple pasteboard formats
-- **Debugging Tools**: Inspect pasteboard contents with JSON output
-- **Fine-grained Control**: Custom priority ordering and separators
-
-## Usage
+Or manually add the tap first (optional):
 
 ```bash
-# Basic conversion
-pastedown
-
-# Save to file
-pastedown > output.md
-
-# Inspect pasteboard contents
-pastedown inspect
-
-# Force specific source type
-pastedown --from html
-
-# Merge multiple formats
-pastedown --merge html,text
+brew tap cloudygreybeard/tap
 ```
 
 ## Development
