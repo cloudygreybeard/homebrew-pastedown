@@ -1,11 +1,15 @@
-# homebrew-pastedown
+# homebrew-tap
 
-Homebrew tap for [pastedown](https://github.com/cloudygreybeard/pastedown) - macOS Pasteboard to Markdown converter.
+Homebrew tap for cloudygreybeard tools including [pastedown](https://github.com/cloudygreybeard/pastedown) - macOS Pasteboard to Markdown converter.
 
 ## Installation
 
 ```bash
-brew install cloudygreybeard/pastedown/pastedown
+# Install pastedown
+brew install cloudygreybeard/tap/pastedown
+
+# Add the tap to install other tools
+brew tap cloudygreybeard/tap
 ```
 
 ## What is pastedown?
@@ -98,11 +102,11 @@ If installation fails:
 
 ```bash
 # Update the tap
-brew untap cloudygreybeard/pastedown
-brew tap cloudygreybeard/pastedown
+brew untap cloudygreybeard/tap
+brew tap cloudygreybeard/tap
 
 # Try installing again
-brew install cloudygreybeard/pastedown/pastedown
+brew install cloudygreybeard/tap/pastedown
 ```
 
 ### Formula Issues
@@ -111,10 +115,10 @@ If the formula has issues:
 
 ```bash
 # Check formula syntax
-brew audit cloudygreybeard/pastedown/pastedown
+brew audit cloudygreybeard/tap/pastedown
 
 # Test the formula
-brew test cloudygreybeard/pastedown/pastedown
+brew test cloudygreybeard/tap/pastedown
 ```
 
 ## Links
